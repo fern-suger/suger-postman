@@ -1,0 +1,1641 @@
+{
+  "info": {
+    "name": "Suger API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://www.suger.io",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ],
+    "type": "bearer"
+  },
+  "item": [
+    {
+      "name": "Api Auth",
+      "item": [
+        {
+          "name": "Get the Bearer Access Token to access Suger API",
+          "request": {
+            "description": "Get the Bearer Access Token by giving the Suger API Client ID & Client Secret.",
+            "url": {
+              "raw": "{{baseUrl}}/public/apiClient/accessToken",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "public",
+                "apiClient",
+                "accessToken"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": \"example\",\n    \"organizationID\": \"example\",\n    \"secret\": \"example\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "Buyer",
+      "item": [
+        {
+          "name": "List all buyers under the organization",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/buyer",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "buyer"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Get the buyer",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/buyer/:buyerId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "buyer",
+                ":buyerId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "buyerId",
+                  "value": "",
+                  "description": "Buyer ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Update the name & description of the buyer",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/buyer/:buyerId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "buyer",
+                ":buyerId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "buyerId",
+                  "value": "",
+                  "description": "Buyer ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"description\": \"example\",\n    \"id\": \"example\",\n    \"name\": \"example\",\n    \"organizationID\": \"example\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "Entitlement",
+      "item": [
+        {
+          "name": "Add Credit Amount in Entitlement.",
+          "request": {
+            "description": "Add Credit Amount to the given Entitlement. The credit amount is accumulated & saved in the current Entitlement Term of the gvien Entitlement.",
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/addEntitlementCredit",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "addEntitlementCredit"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"creditAmountIncrement\": 0,\n    \"entitlementID\": \"example\",\n    \"organizationID\": \"example\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "List all entitlements of the buyer",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/buyer/:buyerId/entitlement",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "buyer",
+                ":buyerId",
+                "entitlement"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "buyerId",
+                  "value": "",
+                  "description": "Buyer ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "List all entitlements under the organization",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/entitlement",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "entitlement"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Get entitlement",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/entitlement/:entitlementId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "entitlement",
+                ":entitlementId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "entitlementId",
+                  "value": "",
+                  "description": "Entitlement ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Update entitlement name",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/entitlement/:entitlementId/entitlementName",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "entitlement",
+                ":entitlementId",
+                "entitlementName"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "entitlementId",
+                  "value": "",
+                  "description": "Entitlement ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": \"example\",\n    \"name\": \"example\",\n    \"organizationID\": \"example\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "List all entitlements under the offer",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/offer/:offerId/entitlement",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "offer",
+                ":offerId",
+                "entitlement"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "offerId",
+                  "value": "",
+                  "description": "Offer ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "List all entitlements under the partner",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/partner/:partner/entitlement",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "partner",
+                ":partner",
+                "entitlement"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "partner",
+                  "value": "",
+                  "description": "Cloud Partner"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "List all entitlements under the product",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/product/:productId/entitlement",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "product",
+                ":productId",
+                "entitlement"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "productId",
+                  "value": "",
+                  "description": "Product ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "Entitlement Term",
+      "item": [
+        {
+          "name": "List all Entitlement Terms of the Entitlement.",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/entitlement/{entitlementId}/entitlementTerm",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "entitlement",
+                "{entitlementId}",
+                "entitlementTerm"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "entitlementId",
+                  "value": "",
+                  "description": "Entitlement ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Get an Entitlement Term.",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/entitlement/{entitlementId}/entitlementTerm/:entitlementTermId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "entitlement",
+                "{entitlementId}",
+                "entitlementTerm",
+                ":entitlementTermId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "entitlementId",
+                  "value": "",
+                  "description": "Entitlement ID"
+                },
+                {
+                  "key": "entitlementTermId",
+                  "value": "",
+                  "description": "Entitlement Term ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "Integration",
+      "item": [
+        {
+          "name": "List all integrations under the organization",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/integration",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "integration"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Create an integration.",
+          "request": {
+            "description": "For each organization, partner & service, there should be at most one integration.",
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/integration",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "integration"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"info\": {\n        \"awsIntegration\": {\n            \"externalID\": \"example\",\n            \"iamRoleArn\": \"example\",\n            \"marketplaceStartDate\": \"example\",\n            \"mcasFullSyncDone\": true,\n            \"mcasIamRoleArn\": \"example\",\n            \"mcasS3Bucket\": \"example\",\n            \"mcasSnsTopic\": \"example\",\n            \"mdfsFullSyncDone\": true,\n            \"mdfsKmsKeyArn\": \"example\",\n            \"mdfsS3BucketArn\": \"example\",\n            \"policyArns\": [\n                \"example\"\n            ]\n        },\n        \"azureIntegration\": {\n            \"cmaFullSyncDone\": true,\n            \"credential\": {\n                \"clientID\": \"example\",\n                \"clientSecret\": \"example\",\n                \"clientSecretKey\": \"example\",\n                \"resourceID\": \"example\",\n                \"tenantID\": \"example\"\n            }\n        },\n        \"gcpIntegration\": {\n            \"gcpProjectId\": \"example\",\n            \"gcpProjectNumber\": \"example\",\n            \"identityProviderId\": \"example\",\n            \"partnerId\": \"example\",\n            \"pubsubTopic\": \"example\",\n            \"reportBucket\": \"example\",\n            \"reportFullSyncDone\": true,\n            \"reportStartDate\": \"example\",\n            \"serviceAccountEmail\": \"example\",\n            \"serviceNames\": [\n                \"example\"\n            ],\n            \"workloadIdentityPoolId\": \"example\"\n        }\n    },\n    \"organizationID\": \"example\",\n    \"partner\": \"example\",\n    \"service\": \"example\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Get the integration for the given organization, partner & service.",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/integration/:partner/:service",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "integration",
+                ":partner",
+                ":service"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "partner",
+                  "value": "",
+                  "description": "Cloud Partner"
+                },
+                {
+                  "key": "service",
+                  "value": "",
+                  "description": "Partner Service"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Delete the integration.",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/integration/:partner/:service",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "integration",
+                ":partner",
+                ":service"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "partner",
+                  "value": "",
+                  "description": "Cloud Partner"
+                },
+                {
+                  "key": "service",
+                  "value": "",
+                  "description": "Partner Service"
+                }
+              ]
+            },
+            "header": [],
+            "method": "DELETE"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Update the integration.",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/integration/:partner/:service",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "integration",
+                ":partner",
+                ":service"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "partner",
+                  "value": "",
+                  "description": "Cloud Partner"
+                },
+                {
+                  "key": "service",
+                  "value": "",
+                  "description": "Partner Service"
+                }
+              ]
+            },
+            "header": [],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"info\": {\n        \"awsIntegration\": {\n            \"externalID\": \"example\",\n            \"iamRoleArn\": \"example\",\n            \"marketplaceStartDate\": \"example\",\n            \"mcasFullSyncDone\": true,\n            \"mcasIamRoleArn\": \"example\",\n            \"mcasS3Bucket\": \"example\",\n            \"mcasSnsTopic\": \"example\",\n            \"mdfsFullSyncDone\": true,\n            \"mdfsKmsKeyArn\": \"example\",\n            \"mdfsS3BucketArn\": \"example\",\n            \"policyArns\": [\n                \"example\"\n            ]\n        },\n        \"azureIntegration\": {\n            \"cmaFullSyncDone\": true,\n            \"credential\": {\n                \"clientID\": \"example\",\n                \"clientSecret\": \"example\",\n                \"clientSecretKey\": \"example\",\n                \"resourceID\": \"example\",\n                \"tenantID\": \"example\"\n            }\n        },\n        \"gcpIntegration\": {\n            \"gcpProjectId\": \"example\",\n            \"gcpProjectNumber\": \"example\",\n            \"identityProviderId\": \"example\",\n            \"partnerId\": \"example\",\n            \"pubsubTopic\": \"example\",\n            \"reportBucket\": \"example\",\n            \"reportFullSyncDone\": true,\n            \"reportStartDate\": \"example\",\n            \"serviceAccountEmail\": \"example\",\n            \"serviceNames\": [\n                \"example\"\n            ],\n            \"workloadIdentityPoolId\": \"example\"\n        }\n    },\n    \"organizationID\": \"example\",\n    \"partner\": \"example\",\n    \"service\": \"example\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Verify the integration, check whether it works correctly.",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/integration/:partner/:service/verify",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "integration",
+                ":partner",
+                ":service",
+                "verify"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "partner",
+                  "value": "",
+                  "description": "Cloud Partner"
+                },
+                {
+                  "key": "service",
+                  "value": "",
+                  "description": "Partner Service"
+                }
+              ]
+            },
+            "header": [],
+            "method": "POST"
+          },
+          "response": [],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "Metering",
+      "item": [
+        {
+          "name": "list all UsageRecordGroups under the given entitlement",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/entitlement/:entitlementId/usageRecordGroup?limit=&offset=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "entitlement",
+                ":entitlementId",
+                "usageRecordGroup"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "",
+                  "description": "List pagination size, default 20"
+                },
+                {
+                  "key": "offset",
+                  "value": "",
+                  "description": "List pagination offset, default 0"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "entitlementId",
+                  "value": "",
+                  "description": "Entitlement ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Report new UsageRecordGroup.",
+          "request": {
+            "description": "It is recommended to provide the ID in the request body CreateUsageRecordGroupParams, so the report can be deduplicated. All duplicate report will return error code 409.",
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/entitlement/:entitlementId/usageRecordGroup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "entitlement",
+                ":entitlementId",
+                "usageRecordGroup"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "entitlementId",
+                  "value": "",
+                  "description": "Entitlement ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"entitlementID\": \"example\",\n    \"id\": \"example\",\n    \"organizationID\": \"example\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "list all UsageRecordReports under the given entitlement",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/entitlement/:entitlementId/usageRecordReport?entitlementTermId=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "entitlement",
+                ":entitlementId",
+                "usageRecordReport"
+              ],
+              "query": [
+                {
+                  "key": "entitlementTermId",
+                  "value": "",
+                  "description": "The Entitlement Term ID, if not given, return the UsageRecordReports of all Entitlement Terms under the Entitlement"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "entitlementId",
+                  "value": "",
+                  "description": "Entitlement ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "list all UsageRecordGroups under the given product",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/product/:productId/usageRecordGroup?limit=&offset=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "product",
+                ":productId",
+                "usageRecordGroup"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "",
+                  "description": "List pagination size, default 20"
+                },
+                {
+                  "key": "offset",
+                  "value": "",
+                  "description": "List pagination offset, default 0"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "productId",
+                  "value": "",
+                  "description": "Product ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "list all UsageRecordGroups under the given organization",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/usageRecordGroup?limit=&offset=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "usageRecordGroup"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "",
+                  "description": "List pagination size, default 20"
+                },
+                {
+                  "key": "offset",
+                  "value": "",
+                  "description": "List pagination offset, default 0"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "get an UsageRecordGroup by organization_entitlement_usage RecordGroup id",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/usageRecordGroup/:usageRecordGroupId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "usageRecordGroup",
+                ":usageRecordGroupId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "usageRecordGroupId",
+                  "value": "",
+                  "description": "UsageRecordGroup ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "Offer",
+      "item": [
+        {
+          "name": "List all offers under the organization",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/offer",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "offer"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Create a private offer.",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/offer",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "offer"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"creationTime\": \"example\",\n    \"endTime\": \"example\",\n    \"expireTime\": \"example\",\n    \"externalID\": \"example\",\n    \"id\": \"example\",\n    \"info\": {\n        \"azureProductVariant\": {\n            \"azureGovernmentCertifications\": [\n                {\n                    \"title\": \"example\",\n                    \"uri\": \"example\",\n                    \"validationResults\": [\n                        {\n                            \"errorMessage\": \"example\",\n                            \"memberNames\": [\n                                \"example\"\n                            ]\n                        }\n                    ]\n                }\n            ],\n            \"cloudAvailabilities\": [\n                \"example\"\n            ],\n            \"conversionPaths\": \"example\",\n            \"extendedProperties\": [\n                {\n                    \"type\": \"example\",\n                    \"value\": \"example\"\n                }\n            ],\n            \"externalID\": \"example\",\n            \"featureAvailabilities\": [\n                {\n                    \"customMeters\": [\n                        {\n                            \"displayName\": \"example\",\n                            \"id\": \"example\",\n                            \"includedBaseQuantities\": [\n                                {\n                                    \"isInfinite\": true,\n                                    \"quantity\": 0,\n                                    \"recurringUnit\": \"example\"\n                                }\n                            ],\n                            \"isEnabled\": true,\n                            \"priceInUsd\": 0,\n                            \"uniqueID\": \"example\",\n                            \"unitOfMeasure\": \"example\"\n                        }\n                    ],\n                    \"id\": \"example\",\n                    \"isHidden\": true,\n                    \"marketStates\": [\n                        {\n                            \"marketCode\": \"example\",\n                            \"state\": \"example\"\n                        }\n                    ],\n                    \"markets\": [\n                        {\n                            \"friendlyName\": \"example\",\n                            \"marketCode\": \"example\"\n                        }\n                    ],\n                    \"priceSchedules\": [\n                        {\n                            \"dateTimeRange\": {\n                                \"endAt\": {\n                                    \"dateTimeInUtc\": \"example\",\n                                    \"localizePerMarket\": true\n                                },\n                                \"startAt\": {\n                                    \"dateTimeInUtc\": \"example\",\n                                    \"localizePerMarket\": true\n                                }\n                            },\n                            \"friendlyName\": \"example\",\n                            \"isBaseSchedule\": true,\n                            \"marketCodes\": [\n                                \"example\"\n                            ],\n                            \"schedules\": [\n                                {\n                                    \"priceCadence\": {\n                                        \"type\": \"example\",\n                                        \"value\": 0\n                                    },\n                                    \"pricingModel\": \"example\",\n                                    \"pricingUnits\": [\n                                        {\n                                            \"isUnlimitedUnit\": true,\n                                            \"lowerUnit\": 0,\n                                            \"name\": \"example\",\n                                            \"unitType\": \"example\",\n                                            \"upperUnit\": 0\n                                        }\n                                    ],\n                                    \"retailPrice\": {\n                                        \"currencyCode\": \"example\",\n                                        \"openPrice\": 0,\n                                        \"priceTierID\": \"example\"\n                                    }\n                                }\n                            ]\n                        }\n                    ],\n                    \"properties\": [\n                        {\n                            \"type\": \"example\",\n                            \"value\": \"example\"\n                        }\n                    ],\n                    \"resourceType\": \"example\",\n                    \"subscriptionAudiences\": [\n                        {\n                            \"description\": \"example\",\n                            \"id\": \"example\"\n                        }\n                    ],\n                    \"tenantAudiences\": [\n                        {\n                            \"description\": \"example\",\n                            \"id\": \"example\"\n                        }\n                    ],\n                    \"trial\": {\n                        \"dateTimeRange\": {\n                            \"endAt\": {\n                                \"dateTimeInUtc\": \"example\",\n                                \"localizePerMarket\": true\n                            },\n                            \"startAt\": {\n                                \"dateTimeInUtc\": \"example\",\n                                \"localizePerMarket\": true\n                            }\n                        },\n                        \"duration\": 0,\n                        \"durationType\": \"example\",\n                        \"type\": \"example\"\n                    },\n                    \"visibility\": \"example\"\n                }\n            ],\n            \"friendlyName\": \"example\",\n            \"id\": \"example\",\n            \"leadGenID\": \"example\",\n            \"referenceVariantID\": \"example\",\n            \"resourceType\": \"example\",\n            \"state\": \"example\"\n        },\n        \"baseAgreementId\": \"example\",\n        \"buyerAwsAccountIds\": [\n            \"example\"\n        ],\n        \"buyerAzureTenants\": [\n            {\n                \"description\": \"example\",\n                \"id\": \"example\"\n            }\n        ],\n        \"commits\": [\n            {\n                \"category\": \"example\",\n                \"description\": \"example\",\n                \"key\": \"example\",\n                \"length\": 0,\n                \"maximumUsers\": 0,\n                \"minimumUsers\": 0,\n                \"name\": \"example\",\n                \"quantity\": 0,\n                \"rate\": 0,\n                \"timeUnit\": \"example\",\n                \"type\": \"example\",\n                \"types\": [\n                    \"example\"\n                ]\n            }\n        ],\n        \"currency\": \"example\",\n        \"dimensions\": [\n            {\n                \"category\": \"example\",\n                \"description\": \"example\",\n                \"includedBaseQuantities\": [\n                    {\n                        \"isInfinite\": true,\n                        \"quantity\": 0,\n                        \"recurringUnit\": \"example\"\n                    }\n                ],\n                \"key\": \"example\",\n                \"name\": \"example\",\n                \"rate\": 0,\n                \"types\": [\n                    \"example\"\n                ],\n                \"usageCount\": {\n                    \"creditCount\": 0,\n                    \"includedCount\": 0,\n                    \"reportedCount\": 0\n                },\n                \"valueType\": \"example\"\n            }\n        ],\n        \"discount\": 0,\n        \"eulaType\": \"example\",\n        \"eulaUrl\": \"example\",\n        \"gcpMetrics\": [\n            {\n                \"description\": \"example\",\n                \"displayName\": \"example\",\n                \"displayUnit\": \"example\",\n                \"displayUnitDescription\": \"example\",\n                \"id\": \"example\",\n                \"metricKind\": \"example\",\n                \"name\": \"example\",\n                \"reportingUnit\": \"example\",\n                \"unit\": \"example\",\n                \"valueType\": \"example\"\n            }\n        ],\n        \"gcpPlans\": [\n            {\n                \"name\": \"example\",\n                \"priceInfo\": {\n                    \"description\": \"example\",\n                    \"priceModel\": \"example\",\n                    \"subscriptionPlans\": [\n                        {\n                            \"period\": \"example\",\n                            \"price\": {\n                                \"currencyCode\": \"example\",\n                                \"nanos\": 0,\n                                \"units\": 0\n                            },\n                            \"taxCategoryOverride\": \"example\"\n                        }\n                    ],\n                    \"usageFees\": [\n                        {\n                            \"displayQuantity\": 0,\n                            \"metricId\": \"example\",\n                            \"priceTiers\": [\n                                {\n                                    \"endUsageAmount\": 0,\n                                    \"price\": {\n                                        \"currencyCode\": \"example\",\n                                        \"nanos\": 0,\n                                        \"units\": 0\n                                    },\n                                    \"startUsageAmount\": 0\n                                }\n                            ],\n                            \"taxCategoryOverride\": \"example\"\n                        }\n                    ]\n                },\n                \"purchaseMode\": \"example\",\n                \"title\": \"example\"\n            }\n        ],\n        \"isAgreementBasedOffer\": true,\n        \"paymentInstallments\": [\n            {\n                \"amount\": 0,\n                \"chargeOn\": \"example\"\n            }\n        ],\n        \"refundCancelationPolicy\": \"example\",\n        \"sellerNotes\": \"example\",\n        \"visibility\": \"example\"\n    },\n    \"name\": \"example\",\n    \"offerType\": \"example\",\n    \"organizationID\": \"example\",\n    \"partner\": \"example\",\n    \"productID\": \"example\",\n    \"service\": \"example\",\n    \"status\": \"example\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Get the offer.",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/offer/:offerId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "offer",
+                ":offerId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "offerId",
+                  "value": "",
+                  "description": "Offer ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Delete the offer.",
+          "request": {
+            "description": "Currently only the offer with status = \"CREATE_PENDING\" or \"CREATE_FAILED\" is allowed to be deleted.",
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/offer/:offerId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "offer",
+                ":offerId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "offerId",
+                  "value": "",
+                  "description": "Offer ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "DELETE"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "List all offers under the cloud partner.",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/partner/:partner/offer",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "partner",
+                ":partner",
+                "offer"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "partner",
+                  "value": "",
+                  "description": "Cloud Partner"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "List all offers under the product.",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/product/:productId/offer",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "product",
+                ":productId",
+                "offer"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "productId",
+                  "value": "",
+                  "description": "Product ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "Operation",
+      "item": [
+        {
+          "name": "list all long running operations under the given organization, offer or entitlement.",
+          "request": {
+            "description": "The operations can be filtered by offerId or entitlementId. If both of them are provided, then it is filtered by entitlementId only.",
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/operation?offerId=&entitlementId=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "operation"
+              ],
+              "query": [
+                {
+                  "key": "offerId",
+                  "value": "",
+                  "description": "filter by offerId"
+                },
+                {
+                  "key": "entitlementId",
+                  "value": "",
+                  "description": "filter by entitlementId"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "Product",
+      "item": [
+        {
+          "name": "List all products under the cloud partner",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/partner/:partner/product",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "partner",
+                ":partner",
+                "product"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "partner",
+                  "value": "",
+                  "description": "Cloud Partner"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "List all products under the organization",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/product",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "product"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Create an Product & List it to the Partner's marketplace.",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/product",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "product"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"externalID\": \"example\",\n    \"fulfillmentUrl\": \"example\",\n    \"id\": \"example\",\n    \"info\": {\n        \"awsSaasProduct\": {\n            \"Description\": {\n                \"AssociatedProducts\": \"example\",\n                \"Categories\": [\n                    \"example\"\n                ],\n                \"EuW8Submitted\": true,\n                \"Highlights\": [\n                    \"example\"\n                ],\n                \"LongDescription\": \"example\",\n                \"Manufacturer\": \"example\",\n                \"ProductCode\": \"example\",\n                \"ProductTitle\": \"example\",\n                \"Registered\": true,\n                \"SearchKeywords\": [\n                    \"example\"\n                ],\n                \"ShortDescription\": \"example\",\n                \"Sku\": \"example\",\n                \"UsW9Submitted\": true,\n                \"Visibility\": \"example\"\n            },\n            \"Dimensions\": [\n                {\n                    \"Description\": \"example\",\n                    \"Key\": \"example\",\n                    \"Name\": \"example\",\n                    \"Types\": [\n                        \"example\"\n                    ],\n                    \"Unit\": \"example\"\n                }\n            ],\n            \"PromotionalResources\": {\n                \"AdditionalResources\": [\n                    {\n                        \"Text\": \"example\",\n                        \"Type\": \"example\",\n                        \"Url\": \"example\"\n                    }\n                ],\n                \"LogoUrl\": \"example\"\n            },\n            \"SupportInformation\": {\n                \"Description\": \"example\"\n            },\n            \"Versions\": [\n                {\n                    \"DeliveryOptions\": [\n                        {\n                            \"FulfillmentUrl\": \"example\",\n                            \"Id\": \"example\",\n                            \"Type\": \"example\"\n                        }\n                    ],\n                    \"Id\": \"example\"\n                }\n            ],\n            \"dataFeedProductId\": \"example\",\n            \"productId\": \"example\"\n        },\n        \"awsSnsSubscriptions\": [\n            {\n                \"Endpoint\": \"example\",\n                \"Protocol\": \"example\",\n                \"Status\": \"example\",\n                \"SubscriptionArn\": \"example\",\n                \"TopicArn\": \"example\"\n            }\n        ],\n        \"azureProduct\": {\n            \"availabilities\": [\n                {\n                    \"emailAudiences\": [\n                        {\n                            \"description\": \"example\",\n                            \"id\": \"example\"\n                        }\n                    ],\n                    \"enterpriseLicensing\": \"example\",\n                    \"id\": \"example\",\n                    \"resourceType\": \"example\",\n                    \"subscriptionAudiences\": [\n                        {\n                            \"description\": \"example\",\n                            \"id\": \"example\"\n                        }\n                    ],\n                    \"visibility\": \"example\"\n                }\n            ],\n            \"branches\": [\n                {\n                    \"currentDraftInstanceID\": \"example\",\n                    \"friendlyName\": \"example\",\n                    \"id\": \"example\",\n                    \"module\": \"example\",\n                    \"resourceType\": \"example\",\n                    \"type\": \"example\",\n                    \"variantID\": \"example\"\n                }\n            ],\n            \"externalIDs\": [\n                {\n                    \"type\": \"example\",\n                    \"value\": \"example\"\n                }\n            ],\n            \"id\": \"example\",\n            \"isModularPublishing\": true,\n            \"listings\": [\n                {\n                    \"accessInformation\": \"example\",\n                    \"assets\": [\n                        {\n                            \"description\": \"example\",\n                            \"fileName\": \"example\",\n                            \"fileSasUri\": \"example\",\n                            \"friendlyName\": \"example\",\n                            \"id\": \"example\",\n                            \"order\": 0,\n                            \"publisherDefinedSasUri\": \"example\",\n                            \"resourceType\": \"example\",\n                            \"state\": \"example\",\n                            \"type\": \"example\"\n                        }\n                    ],\n                    \"compatibleProducts\": [\n                        \"example\"\n                    ],\n                    \"description\": \"example\",\n                    \"gettingStartedInstructions\": \"example\",\n                    \"id\": \"example\",\n                    \"keywords\": [\n                        \"example\"\n                    ],\n                    \"languageCode\": \"example\",\n                    \"listingContacts\": [\n                        {\n                            \"email\": \"example\",\n                            \"name\": \"example\",\n                            \"phone\": \"example\",\n                            \"type\": \"example\",\n                            \"uri\": \"example\"\n                        }\n                    ],\n                    \"listingUris\": [\n                        {\n                            \"displayText\": \"example\",\n                            \"subtype\": \"example\",\n                            \"type\": \"example\",\n                            \"uri\": \"example\"\n                        }\n                    ],\n                    \"productDisplayName\": \"example\",\n                    \"publisherName\": \"example\",\n                    \"resourceType\": \"example\",\n                    \"shortDescription\": \"example\",\n                    \"summary\": \"example\",\n                    \"title\": \"example\"\n                }\n            ],\n            \"name\": \"example\",\n            \"packageConfigurations\": [\n                {\n                    \"azureActiveDirectoryApplicationID\": \"example\",\n                    \"azureActiveDirectoryTenantID\": \"example\",\n                    \"connectionWebhook\": \"example\",\n                    \"id\": \"example\",\n                    \"landingPageUri\": \"example\",\n                    \"resourceType\": \"example\"\n                }\n            ],\n            \"properties\": [\n                {\n                    \"additionalCategories\": [\n                        \"example\"\n                    ],\n                    \"appVersion\": \"example\",\n                    \"applicableProducts\": [\n                        \"example\"\n                    ],\n                    \"categories\": [\n                        \"example\"\n                    ],\n                    \"customAmendments\": [\n                        \"example\"\n                    ],\n                    \"extendedProperties\": [\n                        \"example\"\n                    ],\n                    \"globalAmendmentTerms\": \"example\",\n                    \"hideKeys\": [\n                        \"example\"\n                    ],\n                    \"id\": \"example\",\n                    \"industries\": [\n                        \"example\"\n                    ],\n                    \"marketingOnlyChange\": true,\n                    \"productTags\": [\n                        \"example\"\n                    ],\n                    \"resourceType\": \"example\",\n                    \"submissionVersion\": \"example\",\n                    \"termsOfUse\": \"example\",\n                    \"useEnterpriseContract\": true\n                }\n            ],\n            \"resourceType\": \"example\",\n            \"setup\": {\n                \"callToAction\": \"example\",\n                \"channelStates\": [\n                    {\n                        \"type\": \"example\",\n                        \"value\": \"example\"\n                    }\n                ],\n                \"enableTestDrive\": true,\n                \"resourceType\": \"example\",\n                \"sellingOption\": \"example\",\n                \"testDriveType\": \"example\",\n                \"trialUri\": \"example\"\n            },\n            \"submissions\": [\n                {\n                    \"areResourcesReady\": true,\n                    \"friendlyName\": \"example\",\n                    \"id\": \"example\",\n                    \"pendingUpdateInfo\": {\n                        \"status\": \"example\",\n                        \"updateType\": \"example\"\n                    },\n                    \"publishedTimeInUtc\": \"example\",\n                    \"releaseNumber\": 0,\n                    \"resourceType\": \"example\",\n                    \"resources\": [\n                        {\n                            \"type\": \"example\",\n                            \"value\": \"example\"\n                        }\n                    ],\n                    \"state\": \"example\",\n                    \"subState\": \"example\",\n                    \"targets\": [\n                        {\n                            \"type\": \"example\",\n                            \"value\": \"example\"\n                        }\n                    ],\n                    \"variantResources\": [\n                        {\n                            \"resources\": [\n                                {\n                                    \"type\": \"example\",\n                                    \"value\": \"example\"\n                                }\n                            ],\n                            \"variantID\": \"example\"\n                        }\n                    ]\n                }\n            ],\n            \"variants\": [\n                {\n                    \"azureGovernmentCertifications\": [\n                        {\n                            \"title\": \"example\",\n                            \"uri\": \"example\",\n                            \"validationResults\": [\n                                {\n                                    \"errorMessage\": \"example\",\n                                    \"memberNames\": [\n                                        \"example\"\n                                    ]\n                                }\n                            ]\n                        }\n                    ],\n                    \"cloudAvailabilities\": [\n                        \"example\"\n                    ],\n                    \"conversionPaths\": \"example\",\n                    \"extendedProperties\": [\n                        {\n                            \"type\": \"example\",\n                            \"value\": \"example\"\n                        }\n                    ],\n                    \"externalID\": \"example\",\n                    \"featureAvailabilities\": [\n                        {\n                            \"customMeters\": [\n                                {\n                                    \"displayName\": \"example\",\n                                    \"id\": \"example\",\n                                    \"includedBaseQuantities\": [\n                                        {\n                                            \"isInfinite\": true,\n                                            \"quantity\": 0,\n                                            \"recurringUnit\": \"example\"\n                                        }\n                                    ],\n                                    \"isEnabled\": true,\n                                    \"priceInUsd\": 0,\n                                    \"uniqueID\": \"example\",\n                                    \"unitOfMeasure\": \"example\"\n                                }\n                            ],\n                            \"id\": \"example\",\n                            \"isHidden\": true,\n                            \"marketStates\": [\n                                {\n                                    \"marketCode\": \"example\",\n                                    \"state\": \"example\"\n                                }\n                            ],\n                            \"markets\": [\n                                {\n                                    \"friendlyName\": \"example\",\n                                    \"marketCode\": \"example\"\n                                }\n                            ],\n                            \"priceSchedules\": [\n                                {\n                                    \"dateTimeRange\": {\n                                        \"endAt\": {\n                                            \"dateTimeInUtc\": \"example\",\n                                            \"localizePerMarket\": true\n                                        },\n                                        \"startAt\": {\n                                            \"dateTimeInUtc\": \"example\",\n                                            \"localizePerMarket\": true\n                                        }\n                                    },\n                                    \"friendlyName\": \"example\",\n                                    \"isBaseSchedule\": true,\n                                    \"marketCodes\": [\n                                        \"example\"\n                                    ],\n                                    \"schedules\": [\n                                        {\n                                            \"priceCadence\": {\n                                                \"type\": \"example\",\n                                                \"value\": 0\n                                            },\n                                            \"pricingModel\": \"example\",\n                                            \"pricingUnits\": [\n                                                {\n                                                    \"isUnlimitedUnit\": true,\n                                                    \"lowerUnit\": 0,\n                                                    \"name\": \"example\",\n                                                    \"unitType\": \"example\",\n                                                    \"upperUnit\": 0\n                                                }\n                                            ],\n                                            \"retailPrice\": {\n                                                \"currencyCode\": \"example\",\n                                                \"openPrice\": 0,\n                                                \"priceTierID\": \"example\"\n                                            }\n                                        }\n                                    ]\n                                }\n                            ],\n                            \"properties\": [\n                                {\n                                    \"type\": \"example\",\n                                    \"value\": \"example\"\n                                }\n                            ],\n                            \"resourceType\": \"example\",\n                            \"subscriptionAudiences\": [\n                                {\n                                    \"description\": \"example\",\n                                    \"id\": \"example\"\n                                }\n                            ],\n                            \"tenantAudiences\": [\n                                {\n                                    \"description\": \"example\",\n                                    \"id\": \"example\"\n                                }\n                            ],\n                            \"trial\": {\n                                \"dateTimeRange\": {\n                                    \"endAt\": {\n                                        \"dateTimeInUtc\": \"example\",\n                                        \"localizePerMarket\": true\n                                    },\n                                    \"startAt\": {\n                                        \"dateTimeInUtc\": \"example\",\n                                        \"localizePerMarket\": true\n                                    }\n                                },\n                                \"duration\": 0,\n                                \"durationType\": \"example\",\n                                \"type\": \"example\"\n                            },\n                            \"visibility\": \"example\"\n                        }\n                    ],\n                    \"friendlyName\": \"example\",\n                    \"id\": \"example\",\n                    \"leadGenID\": \"example\",\n                    \"referenceVariantID\": \"example\",\n                    \"resourceType\": \"example\",\n                    \"state\": \"example\"\n                }\n            ]\n        },\n        \"commits\": [\n            {\n                \"category\": \"example\",\n                \"description\": \"example\",\n                \"key\": \"example\",\n                \"length\": 0,\n                \"maximumUsers\": 0,\n                \"minimumUsers\": 0,\n                \"name\": \"example\",\n                \"quantity\": 0,\n                \"rate\": 0,\n                \"timeUnit\": \"example\",\n                \"type\": \"example\",\n                \"types\": [\n                    \"example\"\n                ]\n            }\n        ],\n        \"currency\": \"example\",\n        \"dimensions\": [\n            {\n                \"category\": \"example\",\n                \"description\": \"example\",\n                \"includedBaseQuantities\": [\n                    {\n                        \"isInfinite\": true,\n                        \"quantity\": 0,\n                        \"recurringUnit\": \"example\"\n                    }\n                ],\n                \"key\": \"example\",\n                \"name\": \"example\",\n                \"rate\": 0,\n                \"types\": [\n                    \"example\"\n                ],\n                \"usageCount\": {\n                    \"creditCount\": 0,\n                    \"includedCount\": 0,\n                    \"reportedCount\": 0\n                },\n                \"valueType\": \"example\"\n            }\n        ],\n        \"eulaUrl\": \"example\",\n        \"gcpProduct\": {\n            \"createTime\": \"example\",\n            \"id\": \"example\",\n            \"listingSpec\": {\n                \"externalAccountSpec\": {\n                    \"loginUri\": \"example\",\n                    \"signupUri\": \"example\",\n                    \"singleSignOnUri\": \"example\"\n                },\n                \"listingType\": \"example\",\n                \"marketingSpec\": {\n                    \"description\": \"example\",\n                    \"displayNames\": [\n                        \"example\"\n                    ],\n                    \"eulaUrl\": \"example\",\n                    \"externalMarketingUrl\": \"example\",\n                    \"icon\": \"example\",\n                    \"searchCategories\": [\n                        \"example\"\n                    ],\n                    \"searchDescription\": \"example\",\n                    \"searchKeywords\": [\n                        \"example\"\n                    ],\n                    \"shortTitle\": \"example\",\n                    \"supportSpec\": {\n                        \"description\": \"example\",\n                        \"email\": \"example\",\n                        \"uri\": \"example\"\n                    },\n                    \"title\": \"example\"\n                },\n                \"purchaseSpec\": {\n                    \"metrics\": [\n                        {\n                            \"description\": \"example\",\n                            \"displayName\": \"example\",\n                            \"displayUnit\": \"example\",\n                            \"displayUnitDescription\": \"example\",\n                            \"id\": \"example\",\n                            \"metricKind\": \"example\",\n                            \"name\": \"example\",\n                            \"reportingUnit\": \"example\",\n                            \"unit\": \"example\",\n                            \"valueType\": \"example\"\n                        }\n                    ],\n                    \"purchaseOptionSpecs\": [\n                        {\n                            \"name\": \"example\",\n                            \"priceInfo\": {\n                                \"description\": \"example\",\n                                \"priceModel\": \"example\",\n                                \"subscriptionPlans\": [\n                                    {\n                                        \"period\": \"example\",\n                                        \"price\": {\n                                            \"currencyCode\": \"example\",\n                                            \"nanos\": 0,\n                                            \"units\": 0\n                                        },\n                                        \"taxCategoryOverride\": \"example\"\n                                    }\n                                ],\n                                \"usageFees\": [\n                                    {\n                                        \"displayQuantity\": 0,\n                                        \"metricId\": \"example\",\n                                        \"priceTiers\": [\n                                            {\n                                                \"endUsageAmount\": 0,\n                                                \"price\": {\n                                                    \"currencyCode\": \"example\",\n                                                    \"nanos\": 0,\n                                                    \"units\": 0\n                                                },\n                                                \"startUsageAmount\": 0\n                                            }\n                                        ],\n                                        \"taxCategoryOverride\": \"example\"\n                                    }\n                                ]\n                            },\n                            \"purchaseMode\": \"example\",\n                            \"title\": \"example\"\n                        }\n                    ]\n                }\n            },\n            \"marketplace\": \"example\",\n            \"name\": \"example\",\n            \"service\": \"example\",\n            \"serviceConfig\": {\n                \"billing\": {\n                    \"metrics\": [\n                        \"example\"\n                    ]\n                },\n                \"metrics\": [\n                    {\n                        \"description\": \"example\",\n                        \"displayName\": \"example\",\n                        \"displayUnit\": \"example\",\n                        \"displayUnitDescription\": \"example\",\n                        \"id\": \"example\",\n                        \"metricKind\": \"example\",\n                        \"name\": \"example\",\n                        \"reportingUnit\": \"example\",\n                        \"unit\": \"example\",\n                        \"valueType\": \"example\"\n                    }\n                ],\n                \"name\": \"example\",\n                \"producerProjectId\": \"example\",\n                \"title\": \"example\"\n            }\n        },\n        \"refundCancelationPolicy\": \"example\",\n        \"sellerNotes\": \"example\"\n    },\n    \"name\": \"example\",\n    \"organizationID\": \"example\",\n    \"partner\": \"example\",\n    \"productType\": \"example\",\n    \"service\": \"example\",\n    \"status\": \"example\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Get the Product",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/product/:productId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "product",
+                ":productId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "productId",
+                  "value": "",
+                  "description": "Product ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Delete the product.",
+          "request": {
+            "description": "Currently only the product with status = \"CREATE_PENDING\" or \"CREATE_FAILED\" is allowed to be deleted.",
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/product/:productId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "product",
+                ":productId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "productId",
+                  "value": "",
+                  "description": "Product ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "DELETE"
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Currently, only the Fulfillment URL is allowed to update.",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/product/:productId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "product",
+                ":productId"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "productId",
+                  "value": "",
+                  "description": "Product ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fulfillmentUrl\": \"example\",\n    \"id\": \"example\",\n    \"organizationID\": \"example\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "List the Metering Dimensions of the Product",
+          "request": {
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/product/:productId/dimension",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "product",
+                ":productId",
+                "dimension"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                },
+                {
+                  "key": "productId",
+                  "value": "",
+                  "description": "Product ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET"
+          },
+          "response": [],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    },
+    {
+      "name": "Report",
+      "item": [
+        {
+          "name": "Get the revenue report.",
+          "request": {
+            "description": "Get the revenue report of the given organization, product, entitlement, or buyer.",
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/revenueReport",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "revenueReport"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"buyerID\": \"example\",\n    \"entitlementID\": \"example\",\n    \"organizationID\": \"example\",\n    \"partner\": \"example\",\n    \"productID\": \"example\",\n    \"reportType\": \"example\",\n    \"service\": \"example\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "_type": "endpoint"
+        },
+        {
+          "name": "Get the usage report.",
+          "request": {
+            "description": "Get the daily usage report of the given entitlement, the default timespan is lifetime.",
+            "url": {
+              "raw": "{{baseUrl}}/org/{orgId}/usageReport",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org",
+                "{orgId}",
+                "usageReport"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "",
+                  "description": "Organization ID"
+                }
+              ]
+            },
+            "header": [],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"entitlementID\": \"example\",\n    \"organizationID\": \"example\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "_type": "endpoint"
+        }
+      ],
+      "_type": "container"
+    }
+  ]
+}
